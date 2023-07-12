@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import QuizOption from '@/components/atoms/QuizOption.vue'
-import { useQuizStore } from '@/stores/quiz';
-const options: string[] = ['s', 'e', 'dd', '22w']
+import { useQuizStore } from '@/stores/quiz'
 
-const { selectedOption, toBeAnswered } = useQuizStore()
+const { 
+  selectedOption, 
+  toBeAnswered, 
+  options
+} = useQuizStore()
 
 </script>
 
@@ -18,3 +21,12 @@ const { selectedOption, toBeAnswered } = useQuizStore()
     />
   </div>
 </template>
+
+<style scoped>
+.quiz-options {
+  @apply
+  text-slate-100
+    text-lg
+    p-6
+}
+</style>

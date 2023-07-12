@@ -28,8 +28,6 @@ const emit = defineEmits<{
 <style scoped>
 .quiz-option {
   @apply
-    text-slate-100
-    text-lg
     flex
     gap-2
 }
