@@ -5,7 +5,13 @@ import QuizBtn from '@/components/atoms/QuizBtn.vue'
 
 import { useQuizStore } from '@/stores/quiz'
 
-const { correctAnswer, quizLengthCount, toBeAnswered } = useQuizStore()
+const { 
+    correctAnswer, 
+    quizLengthCount, 
+    toBeAnswered, 
+    selectedOption,
+    moreQuestions 
+  } = useQuizStore()
 </script>
 
 <template>
@@ -17,7 +23,24 @@ const { correctAnswer, quizLengthCount, toBeAnswered } = useQuizStore()
     
     <QuizCount :count="quizLengthCount"/>
 
-    <QuizBtn label="test"/>
+    <QuizBtn 
+      v-if="toBeAnswered"
+      label="Submit"
+      type="button"
+      :disabled="selectedOption"
+    />
+
+    <QuizBtn 
+      v-else-if="moreQuestions"
+      label="Next"
+      type="button"
+    />
+
+    <QuizBtn 
+      v-else
+      label="Submit Quiz"
+      type="submit"
+    />
   </div>
 </template>
 
