@@ -1,12 +1,18 @@
-import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
-export const useQuizStore = defineStore('quiz', () => {
-  const correctAnswer = ref(false)
-  const quizLengthCount = ref(0)
-  const selectedOption = ref(null)
-  const toBeAnswered = ref(false)
-  const moreQuestions = ref(false)
-
-  return { correctAnswer, quizLengthCount, selectedOption, toBeAnswered, moreQuestions }
+export const useQuizStore = defineStore('quiz', {
+  state: () => ({
+    correctAnswer: false,
+    quizLengthCount: 0,
+    selectedOption: null,
+    toBeAnswered: false,
+    moreQuestions: false,
+    options: ['s', 'e', 'dd', '22w'],
+    quizSubmitted: false,
+  }),
+  actions: {
+    handleSubmission() {
+      this.quizSubmitted = true
+    }
+  }
 })
