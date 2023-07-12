@@ -3,3 +3,12 @@ body {
     bg-gray-900
     overflow-hidden
 }
+
+#app {
+  @apply
+    h-screen
+    w-screen
+    flex
+    items-center
+    justify-center
+}

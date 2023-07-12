@@ -2,17 +2,10 @@
 const props = defineProps<{
   label: string
 }>()
-
-const emit = defineEmits<{
-  (e: 'handleClick'): void
-}>()
 </script>
 
 <template>
-  <button
-    class="quiz-btn"
-    @click="emit('handleClick')"
-  >
+  <button class="quiz-btn">
     {{ label }}
   </button>
 </template>

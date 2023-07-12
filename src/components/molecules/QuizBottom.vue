@@ -5,13 +5,19 @@ import QuizBtn from '@/components/atoms/QuizBtn.vue'
 
 import { useQuizStore } from '@/stores/quiz'
 
+const emit = defineEmits<{
+  (e: 'handleSubmit'): void,
+  (e: 'handleNext'): void,
+  (e: 'handleQuizSubmit'): void
+}>()
+
 const { 
-    correctAnswer, 
-    quizLengthCount, 
-    toBeAnswered, 
-    selectedOption,
-    moreQuestions 
-  } = useQuizStore()
+  correctAnswer, 
+  quizLengthCount, 
+  toBeAnswered, 
+  selectedOption,
+  moreQuestions 
+} = useQuizStore()
 </script>
 
 <template>
@@ -28,18 +34,21 @@ const {
       label="Submit"
       type="button"
       :disabled="selectedOption"
+      @click="emit('handleSubmit')"
     />
 
     <QuizBtn 
       v-else-if="moreQuestions"
       label="Next"
       type="button"
+      @click="emit('handleNext')"
     />
 
     <QuizBtn 
       v-else
       label="Submit Quiz"
       type="submit"
+      @click="emit('handleQuizSubmit')"
     />
   </div>
 </template>
