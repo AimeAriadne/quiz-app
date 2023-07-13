@@ -6,14 +6,14 @@ const { data, loading } =  useFetchQuiz('https://opentdb.com/api.php?amount=5&ca
 
 export const useQuizStore = defineStore('quiz', {
   state: () => ({
-    correctAnswer: false,
-    correctAnswers: 0,
-    selectedOption: null,
-    toBeAnswered: true,
-    quizSubmitted: false,
-    questions: data,
-    questionIndex: 0,
-    loading,
+    correctAnswer: false as boolean,
+    correctAnswers: 0 as number,
+    selectedOption: null as string | null,
+    toBeAnswered: true as boolean,
+    quizSubmitted: false as boolean,
+    questions: data as IQuestion[],
+    questionIndex: 0 as number,
+    loading: loading as boolean,
   }),
   getters: {
     question(state): IQuestion {
@@ -37,6 +37,15 @@ export const useQuizStore = defineStore('quiz', {
     },
     changePosition(): number {
       return Math.floor(Math.random())
-    }
+    },
+    checkAnswer(): void {
+      if (this.selectedOption === this.question.correct_answer) {
+        this.correctAnswers = +1
+        this.correctAnswer = true
+      } else {
+        this.correctAnswer = false
+      }
+      this.toBeAnswered = false
+    },
   }
 })
