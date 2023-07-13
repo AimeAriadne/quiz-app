@@ -27,7 +27,7 @@ const {
 .quiz-options {
   @apply
   text-slate-100
-    text-lg
+    text-2xl
     p-6
 }
 </style>
