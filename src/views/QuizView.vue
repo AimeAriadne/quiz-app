@@ -29,6 +29,6 @@ const { restartQuiz } = useQuizStore()
 .quiz-view {
   @apply
     w-6/12
-    xl:w-3/12
+    xl:w-4/12
 }
 </style>
