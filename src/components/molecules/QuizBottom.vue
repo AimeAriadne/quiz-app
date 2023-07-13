@@ -22,10 +22,12 @@ const {
 
 <template>
   <div class="quiz-bottom">
-    <QuizCheck 
-      v-show="!toBeAnswered"
-      :correctAnswer="correctAnswer"
-    />
+    <div class="quiz-bottom-message">
+      <QuizCheck 
+        v-show="!toBeAnswered"
+        :correctAnswer="correctAnswer"
+      />
+    </div>
     
     <QuizCount :count="quizLengthCount"/>
 
@@ -59,6 +61,11 @@ const {
     flex
     items-center
     justify-between
+}
+
+.quiz-bottom-message {
+  @apply
+    w-3/6
 }
 
 .quiz-count {

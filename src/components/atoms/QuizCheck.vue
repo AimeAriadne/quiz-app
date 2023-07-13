@@ -14,11 +14,6 @@ const props = defineProps<{
 </template>
 
 <style>
-.quiz-check {
-  @apply
-    w-3/6
-}
-
 .quiz-correct {
   @apply
     bg-green-500
