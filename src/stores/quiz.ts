@@ -11,9 +11,9 @@ export const useQuizStore = defineStore('quiz', {
     selectedOption: null as string | null,
     toBeAnswered: true as boolean,
     quizSubmitted: false as boolean,
-    questions: data as IQuestion[],
+    questions: data as unknown as IQuestion[],
     questionIndex: 0 as number,
-    loading: loading as boolean,
+    loading: loading as unknown as boolean,
   }),
   getters: {
     question(state): IQuestion {
