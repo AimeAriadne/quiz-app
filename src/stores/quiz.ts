@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { useFetchQuiz } from '@/composables/useFetchQuiz.js'
 import type IQuestion from '@/interfaces/IQuestion'
 
-const { data, loading } =  useFetchQuiz('https://opentdb.com/api.php?amount=5&category=10&difficulty=easy&type=multiple')
+const { data, loading, fetch } =  useFetchQuiz('https://opentdb.com/api.php?amount=5&category=10&difficulty=easy&type=multiple')
 
 export const useQuizStore = defineStore('quiz', {
   state: () => ({
@@ -53,5 +53,13 @@ export const useQuizStore = defineStore('quiz', {
     handleSubmission(): void {
       this.quizSubmitted = true
     },
+    restartQuiz() {
+      fetch()
+      this.questionIndex = 0
+      this.selectedOption = null
+      this.toBeAnswered = true
+      this.correctAnswers = 0
+      this.quizSubmitted = false
+    }
   }
 })
