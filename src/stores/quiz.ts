@@ -17,7 +17,7 @@ export const useQuizStore = defineStore('quiz', {
   }),
   getters: {
     question(state): IQuestion {
-      return state.questions?.[state.questionIndex]
+      return state.questions[state.questionIndex]
     },
     options(): string[] {
       const currentOptions = this.question.incorrect_answers
@@ -36,7 +36,7 @@ export const useQuizStore = defineStore('quiz', {
       this.quizSubmitted = true
     },
     changePosition(): number {
-      return Math.floor(Math.random())
+      return Math.floor(Math.random() * 4)
     },
     checkAnswer(): void {
       if (this.selectedOption === this.question.correct_answer) {
@@ -47,5 +47,11 @@ export const useQuizStore = defineStore('quiz', {
       }
       this.toBeAnswered = false
     },
+    callNextQuestion() : void {
+      this.questionIndex += 1
+      this.correctAnswer = false
+      this.selectedOption = null
+      this.toBeAnswered = true
+    }
   }
 })

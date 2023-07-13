@@ -7,7 +7,12 @@ import { storeToRefs } from 'pinia'
 import { useQuizStore } from '@/stores/quiz'
 
 const { question } = storeToRefs(useQuizStore())
-const { handleSubmission, checkAnswer } = useQuizStore()
+
+const { 
+  handleSubmission, 
+  checkAnswer,
+  callNextQuestion,
+} = useQuizStore()
 
 </script>
 
@@ -22,6 +27,7 @@ const { handleSubmission, checkAnswer } = useQuizStore()
 
     <QuizBottom
       @handle-submit="checkAnswer"
+      @handle-next="callNextQuestion"
     />
   </form>
 </template>
