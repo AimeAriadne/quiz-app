@@ -8,7 +8,6 @@ import { useQuizStore } from '@/stores/quiz'
 const emit = defineEmits<{
   (e: 'handleSubmit'): void,
   (e: 'handleNext'): void,
-  (e: 'handleQuizSubmit'): void
 }>()
 
 const { 
@@ -51,7 +50,6 @@ const {
       v-else
       label="Submit Quiz"
       type="submit"
-      @click="emit('handleQuizSubmit')"
     />
   </div>
 </template>

@@ -32,9 +32,6 @@ export const useQuizStore = defineStore('quiz', {
     }
   },
   actions: {
-    handleSubmission(): void {
-      this.quizSubmitted = true
-    },
     changePosition(): number {
       return Math.floor(Math.random() * 4)
     },
@@ -52,6 +49,9 @@ export const useQuizStore = defineStore('quiz', {
       this.correctAnswer = false
       this.selectedOption = null
       this.toBeAnswered = true
-    }
+    },
+    handleSubmission(): void {
+      this.quizSubmitted = true
+    },
   }
 })
