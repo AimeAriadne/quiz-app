@@ -15,6 +15,7 @@ const props = defineProps<{
   @apply
     text-slate-100
     bg-blue-700
+    cursor-pointer
     text-base
     border-0
     w-28

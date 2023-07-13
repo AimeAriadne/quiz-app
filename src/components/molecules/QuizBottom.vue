@@ -2,7 +2,7 @@
 import QuizCheck from '@/components/atoms/QuizCheck.vue'
 import QuizCount from '@/components/atoms/QuizCount.vue'
 import QuizBtn from '@/components/atoms/QuizBtn.vue'
-
+import { storeToRefs } from 'pinia'
 import { useQuizStore } from '@/stores/quiz'
 
 const emit = defineEmits<{
@@ -16,8 +16,9 @@ const {
   quizLengthCount, 
   toBeAnswered, 
   selectedOption,
-  moreQuestions 
-} = useQuizStore()
+  moreQuestions,
+} = storeToRefs(useQuizStore())
+
 </script>
 
 <template>
@@ -35,7 +36,7 @@ const {
       v-if="toBeAnswered"
       label="Submit"
       type="button"
-      :disabled="selectedOption"
+      :disabled="!selectedOption"
       @click="emit('handleSubmit')"
     />
 

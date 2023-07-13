@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import QuizOption from '@/components/atoms/QuizOption.vue'
+import { storeToRefs } from 'pinia'
 import { useQuizStore } from '@/stores/quiz'
 
 const { 
   selectedOption, 
   toBeAnswered, 
   options
-} = useQuizStore()
+} = storeToRefs(useQuizStore())
 
 </script>
 
