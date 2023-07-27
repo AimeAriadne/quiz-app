@@ -37,7 +37,7 @@ export const useQuizStore = defineStore('quiz', {
     },
     checkAnswer(): void {
       if (this.selectedOption === this.question.correct_answer) {
-        this.correctAnswers = +1
+        this.correctAnswers += 1
         this.correctAnswer = true
       } else {
         this.correctAnswer = false
