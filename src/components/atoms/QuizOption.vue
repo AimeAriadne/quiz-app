@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-
 const props = defineProps<{
-  option: string,
+  value: string,
   disabled?: boolean,
   modelValue: string | null, 
 }>()
@@ -11,28 +9,32 @@ const emit = defineEmits<{
   (e: 'update:modelValue', value: string | null): void
 }>()
 
-const value = computed({
-  get() {
-    return props.modelValue
-  },
-  set(value) {
-    emit('update:modelValue', value)
-  }
+// const value = computed({
+//   get() {
+//     return props.modelValue
+//   },
+//   set(value) {
+//     emit('update:modelValue', value)
+//   }
+// })
+defineOptions({
+  inheritAttrs: false
 })
 </script>
 
 <template>
   <div class="quiz-option">
     <input 
-      :id="option"
-      :value="option"
+      v-bind="$attrs"
+      :id="value"
+      :value="value"
       :disabled="disabled"
       type="radio"
-      name="option"  
-      v-model="value"
+      :checked="modelValue === value"
+      @change="emit('update:modelValue', value)"
     >
 
-    <label :for="option">{{ option }}</label>
+    <label :for="value">{{ value }}</label>
   </div>
 </template>
 

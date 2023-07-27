@@ -1,12 +1,22 @@
 <script setup lang="ts">
+import { watch } from 'vue'
 import QuizTitleText from '@/components/atoms/QuizTitleText.vue'
 import QuizForm from '@/components/organisms/QuizForm.vue'
 import QuizResult from '@/components/molecules/QuizResult.vue'
 import { storeToRefs } from 'pinia'
 import { useQuizStore } from '@/stores/quiz'
 
-const { loading, quizSubmitted } =  storeToRefs(useQuizStore())
+const { 
+  loading,
+  quizSubmitted,
+  correctAnswers,
+  questions
+ } =  storeToRefs(useQuizStore())
 const { restartQuiz } = useQuizStore()
+
+watch(correctAnswers, () => {
+  console.log('correctAnswers.value :>> ', correctAnswers.value);
+})
 </script>
 
 <template>
@@ -20,6 +30,8 @@ const { restartQuiz } = useQuizStore()
     
     <QuizResult 
       v-else
+      :correctAnswers="correctAnswers"
+      :questions="questions"
       @handle-restart="restartQuiz"
     />
   </main>

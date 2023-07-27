@@ -2,22 +2,19 @@
 import QuizCheck from '@/components/atoms/QuizCheck.vue'
 import QuizCount from '@/components/atoms/QuizCount.vue'
 import QuizBtn from '@/components/atoms/QuizBtn.vue'
-import { storeToRefs } from 'pinia'
-import { useQuizStore } from '@/stores/quiz'
+
+const props = defineProps<{
+  correctAnswer: boolean, 
+  quizLengthCount: string,
+  toBeAnswered: boolean,
+  selectedOption: string | null,
+  moreQuestions: boolean
+}>()
 
 const emit = defineEmits<{
   (e: 'handleSubmit'): void,
   (e: 'handleNext'): void,
 }>()
-
-const { 
-  correctAnswer, 
-  quizLengthCount, 
-  toBeAnswered, 
-  selectedOption,
-  moreQuestions,
-} = storeToRefs(useQuizStore())
-
 </script>
 
 <template>

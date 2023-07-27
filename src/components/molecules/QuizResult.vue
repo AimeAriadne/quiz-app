@@ -1,17 +1,16 @@
 <script setup lang="ts">
 import QuizTitleText from '@/components/atoms/QuizTitleText.vue'
 import QuizBtn from '@/components/atoms/QuizBtn.vue'
-import { storeToRefs } from 'pinia'
-import { useQuizStore } from '@/stores/quiz'
+import type IQuestion from '@/interfaces/IQuestion';
+
+const props = defineProps<{
+  correctAnswers: number, 
+  questions: IQuestion[],
+}>()
 
 const emit = defineEmits<{
   (e: 'handleRestart'): void
 }>()
-
-const { 
-  correctAnswers, 
-  questions, 
-} = storeToRefs(useQuizStore())
 
 </script>
 

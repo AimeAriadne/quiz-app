@@ -1,24 +1,28 @@
 <script setup lang="ts">
 import QuizOption from '@/components/atoms/QuizOption.vue'
-import { storeToRefs } from 'pinia'
-import { useQuizStore } from '@/stores/quiz'
 
-const { 
-  selectedOption, 
-  toBeAnswered, 
-  options
-} = storeToRefs(useQuizStore())
+const props = defineProps<{
+  name: string, 
+  disabled: boolean,
+  options: string[],
+  modelValue: string | null
+}>()
 
+const emit = defineEmits<{
+  (e: 'update:modelValue', value: string | null): void
+}>()
 </script>
 
 <template>
   <div class="quiz-options" >
     <QuizOption  
-      v-model="selectedOption"
       v-for="(option, index) in options"
+      :name="name"
       :key="`option-${index}`"
-      :option="option" 
-      :disabled="!toBeAnswered"
+      :value="option" 
+      :disabled="disabled"
+      :model-value="modelValue"
+      @update:model-value="emit('update:modelValue', $event)"
     />
   </div>
 </template>
